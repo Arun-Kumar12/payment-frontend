@@ -1,0 +1,107 @@
+<div class="add-payment">
+  <h2>Add Payment</h2>
+  <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+    <label for="firstName">First Name:</label>
+    <input id="firstName" formControlName="payee_first_name" />
+    <div *ngIf="paymentForm.get('payee_first_name')?.invalid && paymentForm.get('payee_first_name')?.touched" class="error-message">
+      First name is required.
+    </div>
+
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" formControlName="payee_last_name" />
+    <div *ngIf="paymentForm.get('payee_last_name')?.invalid && paymentForm.get('payee_last_name')?.touched" class="error-message">
+      Last name is required.
+    </div>
+
+    <label for="status">Status:</label>
+    <select id="status" formControlName="payee_payment_status">
+      <option value="pending">Pending</option>
+    </select>
+    <div *ngIf="paymentForm.get('payee_payment_status')?.invalid && paymentForm.get('payee_payment_status')?.touched" class="error-message">
+      Status is required.
+    </div>
+
+    <label for="addedDate">Added Date (UTC):</label>
+    <input id="addedDate" type="datetime-local" formControlName="payee_added_date_utc" />
+    <div *ngIf="paymentForm.get('payee_added_date_utc')?.invalid && paymentForm.get('payee_added_date_utc')?.touched" class="error-message">
+      Added date is required.
+    </div>
+
+    <label for="dueDate">Due Date:</label>
+    <input id="dueDate" type="datetime-local" formControlName="payee_due_date" />
+    <div *ngIf="paymentForm.get('payee_due_date')?.invalid && paymentForm.get('payee_due_date')?.touched" class="error-message">
+      Due date is required.
+    </div>
+
+    <label for="address1">Address Line 1:</label>
+    <input id="address1" formControlName="payee_address_line_1" />
+    <div *ngIf="paymentForm.get('payee_address_line_1')?.invalid && paymentForm.get('payee_address_line_1')?.touched" class="error-message">
+      Address Line 1 is required.
+    </div>
+
+    <label for="address2">Address Line 2:</label>
+    <input id="address2" formControlName="payee_address_line_2" />
+
+    <label for="country">Country:</label>
+    <input id="country" formControlName="payee_country" list="countries" (change)="onCountryChange($event)" />
+    <datalist id="countries">
+      <option *ngFor="let country of countrySuggestions" [value]="country.name"> {{ country.name }} </option>
+    </datalist>
+    <div *ngIf="paymentForm.get('payee_country')?.invalid && paymentForm.get('payee_country')?.touched" class="error-message">
+      Country is required.
+    </div>
+
+    <label for="province">Province/State:</label>
+    <input id="province" formControlName="payee_province_or_state" list="states" (focus)="fetchStates()" />
+    <datalist id="states">
+      <option *ngFor="let state of stateSuggestions" [value]="state"></option>
+    </datalist>
+
+    <label for="city">City:</label>
+    <input id="city" formControlName="payee_city" list="cities" (focus)="fetchCities()" />
+    <datalist id="cities">
+      <option *ngFor="let city of citySuggestions" [value]="city"></option>
+    </datalist>
+
+    <label for="postalCode">Postal Code:</label>
+    <input id="postalCode" formControlName="payee_postal_code" />
+    <div *ngIf="paymentForm.get('payee_postal_code')?.invalid && paymentForm.get('payee_postal_code')?.touched" class="error-message">
+      Postal code is required.
+    </div>
+
+    <label for="phone">Phone Number:</label>
+    <input id="phone" formControlName="payee_phone_number" />
+    <div *ngIf="paymentForm.get('payee_phone_number')?.invalid && paymentForm.get('payee_phone_number')?.touched" class="error-message">
+      Phone number is invalid. Use E.164 format (+1234567890).
+    </div>
+
+    <label for="email">Email:</label>
+    <input id="email" formControlName="payee_email" />
+    <div *ngIf="paymentForm.get('payee_email')?.invalid && paymentForm.get('payee_email')?.touched" class="error-message">
+      Email is invalid.
+    </div>
+
+    <label for="currency">Currency:</label>
+    <input id="currency" formControlName="currency" list="currencies" />
+    <datalist id="currencies">
+      <option *ngFor="let currency of currencySuggestions" [value]="currency"></option>
+    </datalist>
+    <div *ngIf="paymentForm.get('currency')?.invalid && paymentForm.get('currency')?.touched" class="error-message">
+      Currency is required.
+    </div>
+
+    <label for="discount">Discount Percent:</label>
+    <input id="discount" type="number" formControlName="discount_percent" />
+
+    <label for="tax">Tax Percent:</label>
+    <input id="tax" type="number" formControlName="tax_percent" />
+
+    <label for="dueAmount">Due Amount:</label>
+    <input id="dueAmount" formControlName="due_amount" type="number" />
+    <div *ngIf="paymentForm.get('due_amount')?.invalid && paymentForm.get('due_amount')?.touched" class="error-message">
+      Due amount must be greater than 0.
+    </div>
+
+    <button type="submit" [disabled]="paymentForm.invalid">Add Payment</button>
+  </form>
+</div>

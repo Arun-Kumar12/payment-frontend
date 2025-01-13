@@ -1,0 +1,24 @@
+<header>
+    <div class="header-container">
+      <nav>
+        <ul>
+          <li><a routerLink="/" [class.active]="isActive('/')">Home</a></li>
+          <li><a routerLink="/add-payment" [class.active]="isActive('/add-payment')">Add Payment</a></li>
+          <li><a routerLink="/upload-csv" [class.active]="isActive('/upload-csv')">Upload CSV</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <div class="content">
+      <router-outlet />
+    </div>
+  </main>
+  
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2025 Payment Management System.</p>
+    </div>
+  </footer>
+  

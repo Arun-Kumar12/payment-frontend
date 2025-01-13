@@ -1,0 +1,131 @@
+.edit-payment {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    label {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      transition: border-color 0.3s;
+
+      &:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+    }
+
+    select {
+      appearance: none;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23666"><path d="M7 10l5 5 5-5H7z"></path></svg>') no-repeat right 10px center;
+      background-size: 15px;
+    }
+
+    button {
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+
+    .evidence-upload {
+      margin-top: 10px;
+
+      label {
+        font-size: 0.9rem;
+        font-weight: normal;
+        color: #666;
+      }
+
+      input[type='file'] {
+        padding: 5px;
+        font-size: 0.9rem;
+        border: none;
+        background-color: #f1f1f1;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #e9e9e9;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    form {
+      gap: 10px;
+
+      input,
+      select {
+        font-size: 0.9rem;
+        padding: 8px;
+      }
+
+      button {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    form {
+      gap: 8px;
+
+      label {
+        font-size: 0.9rem;
+      }
+
+      input,
+      select {
+        font-size: 0.8rem;
+        padding: 6px;
+      }
+
+      button {
+        font-size: 0.8rem;
+        padding: 8px;
+      }
+    }
+  }
+}

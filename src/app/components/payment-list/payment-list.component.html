@@ -1,0 +1,111 @@
+<div class="payment-list">
+  <h2>Payment List</h2>
+  <button routerLink="/add-payment"><i class="fas fa-plus"></i> Add Payment</button>
+
+  <div class="filters">
+    <input
+      type="text"
+      placeholder="Search by Payee Name"
+      [(ngModel)]="filters.payeeName"
+      (input)="applyFilters()"
+    />
+    <input
+      type="text"
+      placeholder="Search by Status"
+      [(ngModel)]="filters.status"
+      (input)="applyFilters()"
+    />
+    <input
+      type="text"
+      placeholder="Search by Address Line 1"
+      [(ngModel)]="filters.payeeAddressLine1"
+      (input)="applyFilters()"
+    />
+    <input
+      type="text"
+      placeholder="Search by City"
+      [(ngModel)]="filters.payeeCity"
+      (input)="applyFilters()"
+    />
+    <input
+      type="text"
+      placeholder="Search by Country"
+      [(ngModel)]="filters.payeeCountry"
+      (input)="applyFilters()"
+    />
+    <input
+      type="text"
+      placeholder="Search by Province/State"
+      [(ngModel)]="filters.payeeProvinceOrState"
+      (input)="applyFilters()"
+    />
+    <input
+      type="text"
+      placeholder="Search by Postal Code"
+      [(ngModel)]="filters.payeePostalCode"
+      (input)="applyFilters()"
+    />
+    <input
+      type="text"
+      placeholder="Search by Phone Number"
+      [(ngModel)]="filters.payeePhoneNumber"
+      (input)="applyFilters()"
+    />
+    <input
+      type="text"
+      placeholder="Search by Email"
+      [(ngModel)]="filters.payeeEmail"
+      (input)="applyFilters()"
+    />
+    <input
+      type="text"
+      placeholder="Search by Currency"
+      [(ngModel)]="filters.currency"
+      (input)="applyFilters()"
+    />
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Payee Name</th>
+        <th>Status</th>
+        <th>Due Date</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Province/State</th>
+        <th>Email</th>
+        <th>Total Due Amount</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of payments">
+        <td>{{ payment.payee_first_name }} {{ payment.payee_last_name }}</td>
+        <td>{{ payment.payee_payment_status }}</td>
+        <td>{{ payment.payee_due_date | date: 'MMM d, y' }}</td>
+        <td>
+          {{ payment.payee_address_line_1 }}
+          <span *ngIf="payment.payee_address_line_2">, {{ payment.payee_address_line_2 }}</span>
+        </td>
+        <td>{{ payment.payee_city }}</td>
+        <td>{{ payment.payee_country }}</td>
+        <td>{{ payment.payee_province_or_state }}</td>
+        <td>{{ payment.payee_email }}</td>
+        <td>{{ payment.total_due | currency }}</td>
+        <td>
+          <button [routerLink]="['/view-payment', payment._id]" class="view">View Payment</button>
+          <button [routerLink]="['/edit-payment', payment._id]" class="update">Update Payment</button>
+          <button (click)="deletePayment(payment._id)" class="delete">Delete</button>
+        </td>        
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="page === 1">Previous</button>
+    <span>Page {{ page }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
+  </div>
+</div>

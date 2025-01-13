@@ -1,0 +1,14 @@
+<div class="upload-csv">
+    <h2>Upload CSV</h2>
+  
+    <div class="file-upload">
+      <input type="file" (change)="onFileSelect($event)" accept=".csv" />
+    </div>
+  
+    <button (click)="uploadFile()">Upload</button>
+  
+    <div class="message" *ngIf="message">
+      {{ message }}
+    </div>
+  </div>
+  

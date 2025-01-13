@@ -1,0 +1,70 @@
+<div class="edit-payment">
+  <h2>Update Payment</h2>
+  <form [formGroup]="editPaymentForm" (ngSubmit)="onSubmit()">
+    <label for="firstName">First Name:</label>
+    <input id="firstName" formControlName="payee_first_name" readonly />
+
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" formControlName="payee_last_name" readonly />
+
+    <label for="status">Status:</label>
+    <select id="status" formControlName="payee_payment_status" (change)="onStatusChange()">
+      <option value="pending">Pending</option>
+      <option value="due_now">Due Now</option>
+      <option value="completed">Completed</option>
+    </select>
+
+    <label for="addedDate">Added Date (UTC):</label>
+    <input id="addedDate" type="datetime-local" formControlName="payee_added_date_utc" readonly />
+
+    <label for="dueDate">Due Date:</label>
+    <input id="dueDate" type="datetime-local" formControlName="payee_due_date" />
+
+    <label for="address1">Address Line 1:</label>
+    <input id="address1" formControlName="payee_address_line_1" readonly />
+
+    <label for="address2">Address Line 2:</label>
+    <input id="address2" formControlName="payee_address_line_2" readonly />
+
+    <label for="city">City:</label>
+    <input id="city" formControlName="payee_city" readonly />
+
+    <label for="country">Country:</label>
+    <input id="country" formControlName="payee_country" readonly />
+
+    <label for="province">Province/State:</label>
+    <input id="province" formControlName="payee_province_or_state" readonly />
+
+    <label for="postalCode">Postal Code:</label>
+    <input id="postalCode" formControlName="payee_postal_code" readonly />
+
+    <label for="phone">Phone Number:</label>
+    <input id="phone" formControlName="payee_phone_number" readonly />
+
+    <label for="email">Email:</label>
+    <input id="email" type="email" formControlName="payee_email" readonly />
+
+    <label for="currency">Currency:</label>
+    <input id="currency" formControlName="currency" readonly />
+
+    <label for="discount">Discount Percent:</label>
+    <input id="discount" type="number" formControlName="discount_percent" readonly />
+
+    <label for="tax">Tax Percent:</label>
+    <input id="tax" type="number" formControlName="tax_percent" readonly />
+
+    <label for="dueAmount">Due Amount:</label>
+    <input id="dueAmount" type="number" formControlName="due_amount" />
+
+    <label for="totalDue">Total Due:</label>
+    <input id="totalDue" type="number" formControlName="total_due" readonly />
+
+    <div *ngIf="showFileUpload">
+      <label for="evidence">Upload Evidence:</label>
+      <input type="file" id="evidence" (change)="onFileSelect($event)" />
+    </div>
+
+    <button type="submit">Update Payment</button>
+    <button routerLink="/">Back to List</button>
+  </form>
+</div>

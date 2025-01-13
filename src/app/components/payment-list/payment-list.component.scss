@@ -1,0 +1,151 @@
+.payment-list {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  button {
+    display: block;
+    margin: 0 auto 16px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+
+    i {
+      margin-right: 8px;
+    }
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    input {
+      flex: 1 1 calc(25% - 16px);
+      min-width: 200px;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+
+      &::placeholder {
+        color: #aaa;
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+
+    thead {
+      tr {
+        background-color: #f8f9fa;
+      }
+
+      th {
+        text-align: left;
+        padding: 8px;
+        border: 1px solid #ddd;
+      }
+    }
+
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+
+        td {
+          padding: 8px;
+          border: 1px solid #ddd;
+          word-wrap: break-word;
+          max-width: 150px;
+        }
+
+        button {
+          margin: 4px 4px;
+          padding: 4px 8px;
+          font-size: 12px;
+          cursor: pointer;
+          border: none;
+          border-radius: 4px;
+          color: #fff;
+
+          &:hover {
+            opacity: 0.9;
+          }
+
+          &.view {
+            background-color: #007bff;
+            &:hover {
+              background-color: #0056b3;
+            }
+          }
+
+          &.update {
+            background-color: #ffc107;
+            color: #000;
+            &:hover {
+              background-color: #e0a800;
+            }
+          }
+
+          &.delete {
+            background-color: #dc3545;
+            &:hover {
+              background-color: #c82333;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+
+      &:disabled {
+        background-color: #ddd;
+        cursor: not-allowed;
+      }
+    }
+
+    span {
+      font-size: 14px;
+    }
+  }
+}

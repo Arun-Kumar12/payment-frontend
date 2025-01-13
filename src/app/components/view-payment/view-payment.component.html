@@ -1,0 +1,30 @@
+<div class="view-payment">
+  <h2>Payment Details</h2>
+  <p><strong>First Name:</strong> {{ payment?.payee_first_name }}</p>
+  <p><strong>Last Name:</strong> {{ payment?.payee_last_name }}</p>
+  <p><strong>Status:</strong> {{ payment?.payee_payment_status }}</p>
+  <p><strong>Added Date:</strong> {{ payment?.payee_added_date_utc | date: 'MMM d, y' }}</p>
+  <p><strong>Due Date:</strong> {{ payment?.payee_due_date | date: 'MMM d, y' }}</p>
+  <p><strong>Address Line 1:</strong> {{ payment?.payee_address_line_1 }}</p>
+  <p><strong>Address Line 2:</strong> {{ payment?.payee_address_line_2 || 'N/A' }}</p>
+  <p><strong>City:</strong> {{ payment?.payee_city }}</p>
+  <p><strong>Country:</strong> {{ payment?.payee_country }}</p>
+  <p><strong>Province/State:</strong> {{ payment?.payee_province_or_state }}</p>
+  <p><strong>Postal Code:</strong> {{ payment?.payee_postal_code }}</p>
+  <p><strong>Phone Number:</strong> {{ payment?.payee_phone_number }}</p>
+  <p><strong>Email:</strong> {{ payment?.payee_email }}</p>
+  <p><strong>Currency:</strong> {{ payment?.currency }}</p>
+  <p><strong>Discount %:</strong> {{ payment?.discount_percent | number: '1.2-2' }}</p>
+  <p><strong>Tax %:</strong> {{ payment?.tax_percent | number: '1.2-2' }}</p>
+  <p><strong>Due Amount:</strong> {{ payment?.due_amount | currency }}</p>
+  <p><strong>Total Due Amount:</strong> {{ payment?.total_due | currency }}</p>
+  <p><strong>Evidence File:</strong>
+    <a *ngIf="payment?.evidence_file_url"
+       [href]="payment.evidence_file_url" target="_blank">
+      View
+    </a>
+    <span *ngIf="!payment?.evidence_file_url">No file uploaded</span>
+  </p>
+
+  <button routerLink="/">Back to List</button>
+</div>
